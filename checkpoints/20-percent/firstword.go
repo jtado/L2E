@@ -1,17 +1,15 @@
 package student
 
 func FirstWord(s string) string {
-	var word []rune
+	res := ""
 	started := false
-	for _, r := range s {
-		if r == ' ' || r == '\t' || r == '\n' {
-			if started {
-				break
-			}
-		} else {
+	for _, char := range s {
+		if char != ' ' {
+			res += string(char)
 			started = true
-			word = append(word, r)
+		} else if started {
+			break
 		}
 	}
-	return string(word) + "\n"
+	return res + "\n"
 }
