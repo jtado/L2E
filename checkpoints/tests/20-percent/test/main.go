@@ -42,11 +42,11 @@ func main() {
 	fmt.Println(student.Gcd(17, 3))
 
 	// HashCode
-	fmt.Println("=== HashCode ===")
-	fmt.Println(student.HashCode("A"))
-	fmt.Println(student.HashCode("AB"))
-	fmt.Println(student.HashCode("BAC"))
-	fmt.Println(student.HashCode("Hello World"))
+	//fmt.Println("=== HashCode ===")
+	//fmt.Println(student.HashCode("A"))
+	//fmt.Println(student.HashCode("AB"))
+	//fmt.Println(student.HashCode("BAC"))
+	//fmt.Println(student.HashCode("Hello World"))
 
 	// LastWord
 	//fmt.Println("=== LastWord ===")
