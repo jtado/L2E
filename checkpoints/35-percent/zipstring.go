@@ -1,24 +1,39 @@
 package student
 
-import "strconv"
-
 func ZipString(s string) string {
 	if s == "" {
 		return ""
 	}
-	runes := []rune(s)
-	var res string
-	current := runes[0]
-	count := 1
-	for i := 1; i < len(runes); i++ {
-		if runes[i] == current {
+	res := ""
+	count := 0
+	var lastRune rune
+
+	for i, r := range s {
+		if i == 0 {
+			lastRune = r
+			count = 1
+			continue
+		}
+		if r == lastRune {
 			count++
 		} else {
-			res += strconv.Itoa(count) + string(current)
-			current = runes[i]
+			res += itoa(count) + string(lastRune)
+			lastRune = r
 			count = 1
 		}
 	}
-	res += strconv.Itoa(count) + string(current)
+	res += itoa(count) + string(lastRune)
 	return res
+}
+
+func itoa(n int) string {
+	if n == 0 {
+		return "0"
+	}
+	s := ""
+	for n > 0 {
+		s = string(rune(n%10+'0')) + s
+		n /= 10
+	}
+	return s
 }
