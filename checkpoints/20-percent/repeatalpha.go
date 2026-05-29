@@ -1,17 +1,17 @@
 package student
 
 func RepeatAlpha(s string) string {
-	var result []rune
-	for _, r := range s {
+	res := ""
+	for _, char := range s {
 		count := 1
-		if r >= 'a' && r <= 'z' {
-			count = int(r - 'a' + 1)
-		} else if r >= 'A' && r <= 'Z' {
-			count = int(r - 'A' + 1)
+		if char >= 'a' && char <= 'z' {
+			count = int(char - 'a' + 1)
+		} else if char >= 'A' && char <= 'Z' {
+			count = int(char - 'A' + 1)
 		}
 		for i := 0; i < count; i++ {
-			result = append(result, r)
+			res += string(char)
 		}
 	}
-	return string(result)
+	return res
 }
