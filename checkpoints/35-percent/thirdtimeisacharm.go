@@ -1,13 +1,13 @@
 package student
 
 func ThirdTimeIsACharm(str string) string {
-	runes := []rune(str)
-	if len(runes) < 3 {
-		return "\n"
+	res := ""
+	count := 0
+	for _, char := range str {
+		count++
+		if count%3 == 0 {
+			res += string(char)
+		}
 	}
-	var result []rune
-	for i := 2; i < len(runes); i += 3 {
-		result = append(result, runes[i])
-	}
-	return string(result) + "\n"
+	return res + "\n"
 }

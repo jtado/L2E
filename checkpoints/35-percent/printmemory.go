@@ -3,23 +3,32 @@ package student
 import "github.com/01-edu/z01"
 
 func PrintMemory(arr [10]byte) {
-	hexChars := "0123456789abcdef"
-	for i := 0; i < len(arr); i++ {
-		b := arr[i]
-		z01.PrintRune(rune(hexChars[b>>4]))
-		z01.PrintRune(rune(hexChars[b&0x0f]))
+	for i := 0; i < 10; i++ {
+		h1 := arr[i] / 16
+		h2 := arr[i] % 16
 
-		switch i {
-		case 3, 7, 9:
+		if h1 < 10 {
+			z01.PrintRune(rune(h1 + '0'))
+		} else {
+			z01.PrintRune(rune(h1 - 10 + 'a'))
+		}
+
+		if h2 < 10 {
+			z01.PrintRune(rune(h2 + '0'))
+		} else {
+			z01.PrintRune(rune(h2 - 10 + 'a'))
+		}
+
+		if i == 3 || i == 7 || i == 9 {
 			z01.PrintRune('\n')
-		default:
+		} else {
 			z01.PrintRune(' ')
 		}
 	}
 
-	for _, b := range arr {
-		if b >= 32 && b <= 126 {
-			z01.PrintRune(rune(b))
+	for i := 0; i < 10; i++ {
+		if arr[i] >= 32 && arr[i] <= 126 {
+			z01.PrintRune(rune(arr[i]))
 		} else {
 			z01.PrintRune('.')
 		}

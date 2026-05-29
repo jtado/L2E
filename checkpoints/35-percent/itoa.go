@@ -4,19 +4,18 @@ func Itoa(n int) string {
 	if n == 0 {
 		return "0"
 	}
-	sign := ""
-	var val uint64
-	if n < 0 {
-		sign = "-"
-		val = uint64(^n) + 1
-	} else {
-		val = uint64(n)
+	res := ""
+	isNeg := n < 0
+	for n != 0 {
+		digit := n % 10
+		if digit < 0 {
+			digit = -digit
+		}
+		res = string(rune(digit+'0')) + res
+		n /= 10
 	}
-	var res []byte
-	for val > 0 {
-		digit := val % 10
-		res = append([]byte{byte('0' + digit)}, res...)
-		val /= 10
+	if isNeg {
+		res = "-" + res
 	}
-	return sign + string(res)
+	return res
 }
