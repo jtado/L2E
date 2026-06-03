@@ -1,6 +1,6 @@
 package student
 
-func isPrime(n int) bool {
+func IsPrime(n int) bool {
 	if n <= 1 {
 		return false
 	}
@@ -23,7 +23,7 @@ func FindPrevPrime(nb int) int {
 		return 0
 	}
 	for i := nb; i >= 2; i-- {
-		if isPrime(i) {
+		if IsPrime(i) {
 			return i
 		}
 	}
