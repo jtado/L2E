@@ -8,14 +8,14 @@ func FromTo(from int, to int) string {
 	res := ""
 	if from <= to {
 		for i := from; i <= to; i++ {
-			res += string(byte(i/10+'0')) + string(byte(i%10+'0'))
+			res += string(rune(i/10+'0')) + string(rune(i%10+'0'))
 			if i != to {
 				res += ", "
 			}
 		}
 	} else {
 		for i := from; i >= to; i-- {
-			res += string(byte(i/10+'0')) + string(byte(i%10+'0'))
+			res += string(rune(i/10+'0')) + string(rune(i%10+'0'))
 			if i != to {
 				res += ", "
 			}
