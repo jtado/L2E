@@ -1,17 +1,32 @@
 package student
 
 func LastWord(s string) string {
+	res := ""
+	end := -1
 	runes := []rune(s)
-	end := len(runes) - 1
-	for end >= 0 && (runes[end] == ' ' || runes[end] == '\t' || runes[end] == '\n') {
-		end--
+
+	for i := len(runes) - 1; i >= 0; i-- {
+		if runes[i] != ' ' {
+			end = i
+			break
+		}
 	}
-	if end < 0 {
+
+	if end == -1 {
 		return "\n"
 	}
-	start := end
-	for start >= 0 && runes[start] != ' ' && runes[start] != '\t' && runes[start] != '\n' {
-		start--
+
+	start := 0
+	for i := end; i >= 0; i-- {
+		if runes[i] == ' ' {
+			start = i + 1
+			break
+		}
 	}
-	return string(runes[start+1:end+1]) + "\n"
+
+	for i := start; i <= end; i++ {
+		res += string(runes[i])
+	}
+
+	return res + "\n"
 }
